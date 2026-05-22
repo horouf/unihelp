@@ -1,6 +1,6 @@
 "use client"
 
-import { Presentation, Code2, FileText, ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import type { Language } from '@/app/page'
 
 interface ServicesProps {
@@ -11,7 +11,7 @@ interface ServicesProps {
 const services = [
   {
     id: 'slides',
-    icon: Presentation,
+    icon: '📊',
     title: { ar: 'عروض تقديمية', en: 'Presentation Slides' },
     description: {
       ar: 'تصاميم باوربوينت نظيفة واحترافية مخصّصة للعروض الصفية، أيام التقديم، ومناقشات التخرّج.',
@@ -26,7 +26,7 @@ const services = [
   },
   {
     id: 'dev',
-    icon: Code2,
+    icon: '💻',
     title: { ar: 'تطبيقات ويب وموبايل', en: 'Web & Mobile Apps' },
     description: {
       ar: 'مواقع، تطبيقات ويب، وتطبيقات موبايل مبرمجة حسب متطلبات مشروعك الجامعي.',
@@ -41,7 +41,7 @@ const services = [
   },
   {
     id: 'docs',
-    icon: FileText,
+    icon: '📄',
     title: { ar: 'توثيق المشاريع', en: 'Project Documentation' },
     description: {
       ar: 'كتابة المشروع بالكامل — مواصفات متطلبات النظام، مخططات البنية، دليل المستخدم، وكلّه اللي يتوقّعه منك مشرفك.',
@@ -71,8 +71,8 @@ export function Services({ lang, openModal }: ServicesProps) {
             onClick={() => openModal(service.id)}
           >
             <div className="flex items-start gap-4">
-              <div className="icon-box w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                <service.icon className="w-5 h-5 text-primary" />
+              <div className="icon-box w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 text-xl">
+                {service.icon}
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between gap-3">
