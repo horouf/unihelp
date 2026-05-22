@@ -1,0 +1,291 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #05080A;
+  --card: #f8f9fa;
+  --card-foreground: #05080A;
+  --popover: #ffffff;
+  --popover-foreground: #05080A;
+  --primary: #9acd32;
+  --primary-foreground: #000000;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #05080A;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #9acd32;
+  --accent-foreground: #000000;
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: rgba(0, 0, 0, 0.08);
+  --input: rgba(0, 0, 0, 0.04);
+  --ring: #9acd32;
+  --radius: 0.625rem;
+}
+
+.dark {
+  --background: #05080A;
+  --foreground: #ffffff;
+  --card: rgba(14, 18, 22, 0.6);
+  --card-foreground: #ffffff;
+  --popover: #0E1216;
+  --popover-foreground: #ffffff;
+  --primary: #9acd32;
+  --primary-foreground: #000000;
+  --secondary: rgba(255, 255, 255, 0.05);
+  --secondary-foreground: #ffffff;
+  --muted: rgba(255, 255, 255, 0.05);
+  --muted-foreground: rgba(255, 255, 255, 0.5);
+  --accent: #9acd32;
+  --accent-foreground: #000000;
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: rgba(255, 255, 255, 0.05);
+  --input: rgba(255, 255, 255, 0.04);
+  --ring: #9acd32;
+}
+
+@theme inline {
+  --font-sans: 'IBM Plex Sans Arabic', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Animations */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.animate-reveal {
+  animation: reveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.delay-1 {
+  animation-delay: 0.1s;
+}
+.delay-2 {
+  animation-delay: 0.2s;
+}
+.delay-3 {
+  animation-delay: 0.3s;
+}
+.delay-4 {
+  animation-delay: 0.4s;
+}
+
+/* Service Card */
+.service-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.service-card:hover,
+.service-card:active {
+  border-color: rgba(198, 249, 31, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(198, 249, 31, 0.05);
+}
+
+.dark .service-card:hover,
+.dark .service-card:active {
+  background: rgba(14, 18, 22, 0.9);
+}
+
+/* CTA Button */
+.cta-btn {
+  background: #9acd32;
+  color: #000;
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  background: #d4ff4a;
+  box-shadow: 0 0 20px rgba(198, 249, 31, 0.3);
+}
+
+.cta-btn:active {
+  transform: scale(0.97);
+}
+
+/* Ghost Button */
+.ghost-btn {
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  transition: all 0.3s ease;
+}
+
+.ghost-btn:hover {
+  border-color: rgba(198, 249, 31, 0.4);
+  color: #9acd32;
+}
+
+/* Icon Box */
+.icon-box {
+  background: rgba(198, 249, 31, 0.08);
+  border: 1px solid rgba(198, 249, 31, 0.15);
+}
+
+/* Floating CTA */
+.floating-cta {
+  background: #9acd32;
+  color: #000;
+  box-shadow: 0 4px 24px rgba(198, 249, 31, 0.3);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.floating-cta:active {
+  transform: scale(0.95);
+}
+
+.floating-cta.hidden-cta {
+  transform: translateY(120px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: linear-gradient(to left, transparent, var(--border), transparent);
+}
+
+[dir="ltr"] .divider {
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+}
+
+/* Modal */
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-content {
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.modal-overlay.active .modal-content {
+  transform: translateY(0) scale(1);
+}
+
+/* Form Inputs */
+.form-input {
+  background: var(--input);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: rgba(198, 249, 31, 0.4);
+}
+
+.form-input::placeholder {
+  color: var(--muted-foreground);
+}
+
+/* Country Dropdown */
+.country-dropdown {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.country-dropdown.open {
+  max-height: 240px;
+  overflow-y: auto;
+  opacity: 1;
+}
+
+.country-item:hover {
+  background: rgba(198, 249, 31, 0.08);
+}
+
+.country-item.selected {
+  background: rgba(198, 249, 31, 0.1);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+/* Arrow flip for RTL */
+[dir="rtl"] .arrow-icon {
+  transform: rotate(180deg);
+}
+
+/* Toast */
+.toast {
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Blue rounded square background -->
+  <rect width="128" height="128" rx="28" fill="#3B82F6"/>
+  
+  <!-- Graduation cap icon centered -->
+  <g transform="translate(64, 52)">
+    <!-- Cap board/base -->
+    <path d="M -32 0 L -28 -8 L 28 -8 L 32 0 Z" fill="white"/>
+    <!-- Cap top -->
+    <ellipse cx="0" cy="-8" rx="30" ry="10" fill="white"/>
+    <!-- Tassel line -->
+    <line x1="0" y1="0" x2="0" y2="20" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    <!-- Tassel ball -->
+    <circle cx="0" cy="24" r="3" fill="white"/>
+  </g>
+</svg>
